@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Widget</title>
+
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href="mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+
+</head>
+
+<body>
+
+
+
+    <div class="chat-ui-canvas">
+        <div id="header" class="header header-scrolled">
+            <div class="top-icons">
+                <div class="back-arrow">
+                    <div class="back-arrow-line back-arrow-line-1"></div>
+                    <div class="back-arrow-line back-arrow-line-2"></div>
+                    <div class="back-arrow-line back-arrow-line-3"></div>
+                </div>
+
+                <div class="DLogo">
+                    <img src="Images/logo.png" height="70%" />
+                </div>
+                <div class="phone-icon">
+                    <img src="Images/4OTkocV.png" height="50%">
+                </div>
+            </div>
+
+        </div>
+        <div id="message-feed" class="message-feed message-feed-unscrolled">
+
+            <!--<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css'>
+            <a href="http://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Christmas_flood_1717.jpg/1280px-Christmas_flood_1717.jpg" class="with-caption image-link">
+                <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Christmas_flood_1717.jpg/1280px-Christmas_flood_1717.jpg" width="172" height="105" />
+            </a>-->
+
+        </div>
+        <div class="message-input-bar">
+
+
+            <div class="message-box">
+                <textarea id="message" type="text" class="message-input" placeholder="Type message..."></textarea>
+                <button type="submit" class="message-submit" id="btnSend">Send</button>
+
+
+            </div>
+
+        </div>
+    </div>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="js/chartjs/Chart.bundle.min.js"></script>
+
+    <script src="js/Style.js"></script>
+
+
+
+
+    <script src="Scripts/jquery.signalR-2.0.2.js"></script>
+    <script src="signalr/hubs" type="text/javascript"></script>
+    <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+    <script>
+
+
+        var hub = $.connection.chat;
+        //$.connection.hub.qs = { 'username': 'anik' };
+        hub.client.showMessage = function (speakm, message) {
+            var dt = new Date();
+            var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+
+            $(".typing").remove();
+            //var obj = jQuery.parseJSON(message);
+            $("#message-feed").append('<div class="message message-from"> <div class="message-name circle"><img src="Images/icon.png" /></div> <div class="message-body"> <p>' + message + '<p></div> <div class="message-timestamp"> <p>Today ' + time + '</p> </div> </div>');
+            responsiveVoice.speak(speakm);
+        };
+
+        $.connection.hub.start();
+
+        $("#message").keypress(function (e) {
+            if (e.which == 13) {
+
+                senToServer($("#message").val());
+            }
+        });
+
+        function senToServer(Msg) {
+            var dt = new Date();
+            var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+
+            $("#message-feed").append('<div class="message message-to"> <div class="message-name circle"><img src="Images/uicon.png" /></div> <div class="message-body"> <p>' + Msg + '<p></div> <div class="message-timestamp"> <p>Today ' + time + '</p> </div> </div>');
+
+            typing();
+
+            hub.server.broadcastMessage(Msg);
+
+            $("#message").val("");
+
+
+        }
+
+        function typing() {
+            var typing = '<div id="typing" class="message message-from typing"> <div class="message-name circle"><img src="Images/typing.gif" style="width: 96%;" /></div> <div class="message-body">  </div> <div class="message-timestamp"> <p>Today 10:02</p> </div> </div>';
+
+            if ($("#typing").length == 0) {
+                $("#message-feed").append(typing)
+            }
+        }
+
+
+
+    </script>
+    <script type="text/javascript">
+        $(document).on('click', '.button', function (e) { senToServer(this.innerHTML); })
+        $(document).on('click', '#btnSend', function (e) { senToServer($("#message").val()); })
+
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js'></script>
+
+    <script type="text/javascript">
+
+        $('a').magnificPopup({
+            type: 'image',
+            closeBtnInside: false,
+            closeOnContentClick: true,
+            tLoading: '', // remove text from preloader
+
+            /* don't add this part, it's just to disable cache on image and test loading indicator */
+            callbacks: {
+                beforeChange: function () {
+                    this.items[0].src = this.items[0].src + '?=' + Math.random();
+                }
+            }
+
+
+        });
+    </script>
+</body>
+
+</html>

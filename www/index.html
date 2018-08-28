@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * gap://ready file:; style-src 'self' 'unsafe-inline' *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; img-src * data: 'unsafe-inline'">
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Your app title -->
+    <title>My App</title>
+
+    <!-- This template defaults to the iOS CSS theme. To support both iOS and material design themes, see the Framework7 Tutorial at the link below:
+        http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-themes-in-single-app.html
+     -->
+    <link href="lib/framework7/css/framework7.ios.css" rel="stylesheet" />
+    <link href="css/framework7.min.css" rel="stylesheet" />
+    <link href="lib/framework7/css/framework7.material.colors.css" rel="stylesheet" />
+    <link href="lib/framework7/css/framework7.material.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <!-- Status bar overlay for full screen mode (PhoneGap) -->
+    <div class="statusbar-overlay"></div>
+
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-reveal">
+        <div class="content-block">
+            <p>Menu</p>
+        </div>
+    </div>
+
+    <!-- Views -->
+    <div class="views">
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Top Navbar-->
+            <div class="navbar theme-white">
+                <div class="navbar-inner">
+                    <div class="left">
+
+                    </div>
+                    <div class="center" style="margin-left: 39%;    top: 19%;">
+                        <img src="Images/logo.png" />
+                    </div>
+                    <div class="right">
+                        <a href="#" class="link icon-only open-panel"><i class="icon icon-bars th"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+            <div class="pages navbar-through toolbar-through">
+                <!-- Page, "data-page" contains page name -->
+                <div class="page">
+                    <div class="page-content messages-content" style="background:none;">
+                        <div class="messages" id="messages">
+
+                            <div class="message message-received message-last">
+                                <!-- Sender name -->  <div class="message-content">
+                                    <!-- Sender name --> <!-- Bubble with text --> <div class="message-bubble">
+                                        <div class="message-text">
+
+                                            <div class="overview-item overview-item--c3">
+                                                <div class="overview__inner">
+                                                    <div class="overview-box clearfix">
+                                                        <div class="icon">
+                                                            <i class="zmdi zmdi-shopping-cart"></i>
+                                                        </div>
+                                                        <div class="text">
+                                                            <h2>388,688</h2>
+                                                            <span>Total Purchase</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="overview-chart">
+                                                        <canvas id="widgetChart2"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="message-name">
+                                    <img src="Images/logo.png"  />
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                        
+
+
+
+                    </div>
+
+
+                </div>
+            </div>
+            <!-- Bottom Toolbar-->
+            <div class="toolbar messagebar" style="background:  none;">
+                <div class="toolbar-inner">
+                    <div class="messagebar-area">
+
+                        <textarea id="message" type="textarea" placeholder="typing message..." class="resizable">
+
+</textarea>
+                    </div><a href="#" class="link message-submit" id="sendchat"> Send</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+
+
+    <script src="../Scripts/jquery-1.6.4.js"></script>
+
+
+
+    <script src="../Scripts/jquery.signalR-2.0.2.js"></script>
+    <script src="../signalr/hubs" type="text/javascript"></script>
+    <script type="text/javascript" src="js/my-app.js"></script>
+    <script type="text/javascript">
+
+
+
+        function scrollbottom() {
+
+
+            $(".page-content").animate({ scrollTop: $('.page-content').prop("scrollHeight") }, 100);
+        }
+
+        scrollbottom();
+
+        var hub = $.connection.chat;
+        //$.connection.hub.qs = { 'username': 'anik' };
+        hub.client.showMessage = function (Speakmessage) {
+            var dt = new Date();
+            var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+
+            $(".typing").remove();
+            //var obj = jQuery.parseJSON(message);
+            $("#messages").append('<div class="message message-received message-last"> <!-- Sender name --> <div class="message-content"> <!-- Sender name --> <div class="message-name">DFM</div> <!-- Bubble with text --> <div class="message-bubble"> <div class="message-text">' + message + '                </div> </div> </div> </div>');
+            scrollbottom();
+        };
+
+
+        hub.client.Connected = function (message) {
+
+            myApp.closeModal();
+
+        };
+
+
+
+        $.connection.hub.start({ jsonp: true });
+
+        $("#message").keypress(function (e) {
+            if (e.which == 13) {
+
+                senToServer($("#message").val());
+            }
+        });
+
+        $('#sendchat').click(function () {
+            senToServer($("#message").val());
+        });
+
+
+
+        function senToServer(Inputmessage) {
+            var dt = new Date();
+            var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+
+            $("#messages").append('<div class="message message-sent"> <div class="message-content"> <!-- Bubble with text --> <div class="message-bubble"> <div class="message-text">' + Inputmessage + '</div> </div> </div> </div>');
+
+            typing();
+            scrollbottom();
+            hub.server.broadcastMessage($("#message").val());
+
+            $("#message").val("");
+
+
+        }
+
+        function typing() {
+            var typing = '<div class="message message-received message-last typing"> <!-- Sender name --> <div class="message-avatar" style="background-image:url(Images/typing.gif)"></div>  </div>  ';
+
+            if ($(".typing").length == 0) {
+                $("#messages").append(typing)
+            }
+        }
+
+        $(".button").click(function () {
+            senToServer(senToServer(this.innerHTML));
+        });
+
+
+
+
+
+
+
+    </script>
+    <script src="js/chartjs/Chart.bundle.min.js"></script>
+    <script src="js/Style.js"></script>
+
+</body>
+
+</html>
