@@ -72,6 +72,8 @@ function pdferror(id){
 function pdfcomplete(id,toURL){
 	$$("#pdf1").attr("src", "Images/pdfC.png");
 		alert(toURL);
-	 document.location.href=toURL;
+	
+	PDFViewer.openPDF(toURL);
+	 
 	
 }
