@@ -72,8 +72,7 @@ function pdferror(id){
 function pdfcomplete(id,toURL){
 	$$("#pdf1").attr("src", "Images/pdfC.png");
 		alert(toURL);
-	
-	PDFViewer.openPDF("http://www.inkwelleditorial.com/pdfSample.pdf");
+	 window.openFileNative.open(toURL);
 	 
 	
 }
