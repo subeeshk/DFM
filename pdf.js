@@ -1,9 +1,21 @@
 function PdfAttachment(content,id){
-	 $$("#pdf1").attr("src", "Images/PdfL.gif");
+	 $$("#pdf1").attr("src", "PdfL.gif");
 	 
-	 fileDownload('DFMChatbot', 'http://www.inkwelleditorial.com/pdfSample.pdf', 'myfile.pdf');
+	 fileDownload('DFMChatbot', 'http://www.inkwelleditorial.com/pdfSample.pdf', 'myfile.pdf',id);
 	 
 	 
-	alert(content);
-	alert(id);
+	
+
 }
+
+function pdferror(id){
+	
+		alert("N"+id);
+	
+}
+function pdfcomplete(id){
+	
+		alert("S"+id);
+	
+}
+
