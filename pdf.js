@@ -1,5 +1,5 @@
 function PdfAttachment(content,id){
-	 $$("#pdf1").attr("src", "Images/logobeta.png");
+	 $$("#pdf1").attr("src", "Images/pdf-icon.png");
 	alert(content);
 	alert(id);
 }
