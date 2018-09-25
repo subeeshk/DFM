@@ -14,8 +14,8 @@ function pdferror(id){
 	
 }
 function pdfcomplete(id){
-	$$("#"+id).attr("src", "Images/PdfC.gif");
-		alert("S"+id);
+	$$("#"+id).attr("src", "Images/PdfC.png");
+		
 	
 }
 
