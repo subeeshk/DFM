@@ -1,4 +1,5 @@
-function PdfAttachment(content){
+function PdfAttachment(content,id){
 	
-	alert('ss');
+	alert(content);
+	alert(id);
 }
