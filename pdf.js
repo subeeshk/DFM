@@ -14,7 +14,7 @@ function pdferror(id){
 	
 }
 function pdfcomplete(id){
-	$$("#"+id).attr("src", "Images/PdfC.png");
+	$$("#pdf1").attr("src", "Images/PdfC.png");
 		
 	
 }
