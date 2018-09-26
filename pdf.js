@@ -59,7 +59,7 @@ function PdfAttachment(content, id) {
 
 function downloadAsset(toURL,fileURL)
 {
-
+alert("d");
     var fileTransfer = new FileTransfer();
 
          fileTransfer.download(
@@ -89,6 +89,7 @@ function downloadAsset(toURL,fileURL)
 
 
 function exist(toURL) {
+    alert("e");
  window.openFileNative.open(toURL);
   $$("#pdf1").attr("src", "Images/pdfC.png");
 
