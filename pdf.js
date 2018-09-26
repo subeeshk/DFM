@@ -15,7 +15,7 @@ function downloadAsset() {
    
 	var fileTransfer = new FileTransfer();
 	
-	fileTransfer.download(assetURL, store + fileName,unction(entry) {
+	fileTransfer.download(assetURL, store + fileName,function(entry) {
 			console.log("Success!");		
 			Showpdf();},
 			function(err) {
