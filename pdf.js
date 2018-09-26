@@ -1,3 +1,25 @@
+
+var reader = new FileReader();
+var fileSource = <here is your file path>
+
+reader.onloadend = function(evt) {
+
+    if(evt.target.result == null) {
+	    
+	    alert(' doesn t exists');
+       // If you receive a null value the file doesn't exists
+    } else {
+        // Otherwise the file exists
+	     alert('  exists');
+    }         
+};
+
+
+
+
+
+
+
 function fileDownload(dirName, fileURL, fileName,id) {
 
     window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
@@ -73,25 +95,14 @@ function pdfcomplete(id,toURL){
 	$$("#pdf1").attr("src", "Images/pdfC.png");
 		//alert(toURL);
 	
-	checkIfFileExists(toURL);
+	// We are going to check if the file exists
+reader.readAsDataURL(toURL); 
 	// window.openFileNative.open(toURL);
-	 
+	
+	
+	
 	
 }
 
 
-function checkIfFileExists(path){
-	alert(path);
-    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
-        fileSystem.root.getFile(path, { create: false }, fileExists, fileDoesNotExist);
-    }, getFSFail); //of requestFileSystem
-}
-function fileExists(fileEntry){
-    alert("File " + fileEntry.fullPath + " exists!");
-}
-function fileDoesNotExist(){
-    alert("file does not exist");
-}
-function getFSFail(evt) {
-    console.log(evt.target.error.code);
-}
+
