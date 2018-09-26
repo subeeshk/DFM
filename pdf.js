@@ -1,10 +1,7 @@
-document.addEventListener("deviceready", init, false);
+
 
 //The directory to store data
 var store;
-
-//Used for status updates
-var $status;
 
 //URL of our asset
 var assetURL = "";
@@ -17,35 +14,26 @@ var fileName = "";
 function downloadAsset() {
    
 	var fileTransfer = new FileTransfer();
-	console.log("About to start transfer");
-	fileTransfer.download(assetURL, store + fileName, 
-		function(entry) {
-			console.log("Success!");
-		
-		
-			appStart();
-		}, 
-		function(err) {
-			console.log("Error");
-			console.dir(err);
+	
+	fileTransfer.download(assetURL, store + fileName,unction(entry) {
+			console.log("Success!");		
+			Showpdf();},
+			function(err) {
+			console.log("Error");		
 		});
 }
 
-//I'm only called when the file exists or has been downloaded.
-function appStart() {
+function Showpdf() {
 	
 	 window.openFileNative.open(store + fileName);
-     alert(store + fileName);
-     
-	//$status.innerHTML = "App ready!";
+	  $$("#pdf1").attr("src", "Images/pdfC.png");
+
 }
 function PdfAttachment(content, id) {
+$$("#pdf1").attr("src", "Images/PdfL.gif");
 store = cordova.file.dataDirectory;
  assetURL = content;
-
-
  fileName = id+".pdf";
-
-window.resolveLocalFileSystemURL(store + fileName, appStart, downloadAsset);
+window.resolveLocalFileSystemURL(store + fileName, Showpdf, downloadAsset);
 
 }
