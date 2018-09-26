@@ -64,7 +64,7 @@ function fileDownload(dirName, fileURL, fileName,id) {
 function PdfAttachment(content,id){
 	 $$("#pdf1").attr("src", "Images/PdfL.gif");
 	 
-	 fileDownload(cordova.file.dataDirectory, content, id+'.pdf',id);
+	 fileDownload("DFMChtbot", content, id+'.pdf',id);
 	 
 	 
 	
