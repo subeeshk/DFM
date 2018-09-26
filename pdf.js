@@ -60,25 +60,13 @@ function pdferror(id) {
     alert("N" + id);
 
 }
-function pdfcomplete(toURL) {
-    $$("#pdf1").attr("src", "Images/pdfC.png");
 
-
-
-    //window.resolveLocalFileSystemURL(toURL, exist(toURL), downloadAsset);
-
-    window.openFileNative.open(toURL);
-
-
-
-
-}
 
 
 
 function downloadAsset(toURL,fileURL)
 {
-alert('Download'+toURL);
+
     var fileTransfer = new FileTransfer();
 
          fileTransfer.download(
@@ -88,13 +76,15 @@ alert('Download'+toURL);
 
                 var furl = theFile.toURL();
 
+  window.openFileNative.open(toURL);
+    $$("#pdf1").attr("src", "Images/pdfC.png");
 
-               // pdfcomplete(furl);
+               
             },
             function (error) {
                 alert(JSON.stringify(error));
                 console.log(JSON.stringify(error));
-               // pdferror(id);
+               
             }
         ); 
     
@@ -106,8 +96,9 @@ alert('Download'+toURL);
 
 
 function exist(toURL) {
-   alert('ex'+ toURL);
-    
+ 
+    $$("#pdf1").attr("src", "Images/pdfC.png");
+
     
     
         window.openFileNative.open(toURL);
