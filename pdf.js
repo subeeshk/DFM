@@ -51,8 +51,87 @@ function fileDownload(dirName, fileURL, fileName, id) {
 
 function PdfAttachment(content, id) {
     $$("#pdf1").attr("src", "Images/PdfL.gif");
-    fileDownload("DFMChtbot", content, id + '.pdf', id);
+
+
+    var store;
+
+
+    //URL of our asset
+    var assetURL = "http://www.inkwelleditorial.com/pdfSample.pdf";
+
+    //File name of our important data file we didn't ship with the app
+    var fileName = "mydatafile.pdf";
+
+
+
+
+    store = cordova.file.dataDirectory;
+
+    //Check for the file. 
+    window.resolveLocalFileSystemURL(store + fileName, appStart, downloadAsset);
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //fileDownload("DFMChtbot", content, id + '.pdf', id);
 }
+
+
+
+
+
+
+
+
+function appStart() {
+    //$status.innerHTML = "App ready!";
+
+    alert('exix');
+}
+
+function downloadAsset() {
+
+    alert('Down');
+
+    var assetURL = "http://www.inkwelleditorial.com/pdfSample.pdf";
+
+    //File name of our important data file we didn't ship with the app
+    var fileName = "mydatafile.pdf";
+
+    var fileTransfer = new FileTransfer();
+    console.log("About to start transfer");
+    fileTransfer.download(assetURL, store + fileName,
+        function (entry) {
+            console.log("Success!");
+            appStart();
+        },
+        function (err) {
+            console.log("Error");
+            console.dir(err);
+        });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -65,7 +144,7 @@ function downloadAsset(toURL, fileURL) {
         toURL,
         function (theFile) {
 
-           
+
 
             window.openFileNative.open(theFile);
             $$("#pdf1").attr("src", "Images/pdfC.png");
