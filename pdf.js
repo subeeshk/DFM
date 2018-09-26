@@ -37,30 +37,12 @@ function fileDownload(dirName, fileURL, fileName, id) {
 
         var fileTransfer = new FileTransfer();
 
-        alert(window.appRootDir.nativeURL + fileName);
-        
-        
-        window.resolveLocalFileSystemURL(window.appRootDir.nativeURL + fileName, exist(window.appRootDir.nativeURL + fileName), downloadAsset(window.appRootDir.nativeURL + fileName));
-        
+          
+        window.resolveLocalFileSystemURL(window.appRootDir.nativeURL + fileName, exist(window.appRootDir.nativeURL + fileName), downloadAsset(window.appRootDir.nativeURL + fileName,fileURL));
         
         
         
-        fileTransfer.download(
-            fileURL,
-            window.appRootDir.nativeURL + fileName,
-            function (theFile) {
 
-                var furl = theFile.toURL();
-
-
-                pdfcomplete(furl);
-            },
-            function (error) {
-                alert(JSON.stringify(error));
-                console.log(JSON.stringify(error));
-                pdferror(id);
-            }
-        );
 
     }
 
@@ -94,12 +76,44 @@ function pdfcomplete(toURL) {
 
 
 
-function downloadAsset(toURL){
+function downloadAsset(toURL,fileURL)
+{
 alert('Download'+toURL);
+    var fileTransfer = new FileTransfer();
+
+         fileTransfer.download(
+            fileURL,
+            toURL,
+            function (theFile) {
+
+                var furl = theFile.toURL();
+
+
+               // pdfcomplete(furl);
+            },
+            function (error) {
+                alert(JSON.stringify(error));
+                console.log(JSON.stringify(error));
+               // pdferror(id);
+            }
+        ); 
+    
+    
+    
+    
+    
 }
 
 
 function exist(toURL) {
    alert('ex'+ toURL);
+    
+    
+    
+        window.openFileNative.open(toURL);
+    
+    
+    
+    
 }
 
