@@ -26,12 +26,14 @@ function init() {
 }
 
 function downloadAsset() {
-    alert("ddd");
+   
 	var fileTransfer = new FileTransfer();
 	console.log("About to start transfer");
 	fileTransfer.download(assetURL, store + fileName, 
 		function(entry) {
 			console.log("Success!");
+		
+		 alert(store + fileName);
 			appStart();
 		}, 
 		function(err) {
