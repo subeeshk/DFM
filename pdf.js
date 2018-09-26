@@ -64,9 +64,9 @@ function fileDownload(dirName, fileURL, fileName,id) {
 function PdfAttachment(content,id){
 	 $$("#pdf1").attr("src", "Images/PdfL.gif");
 	 
-	var toURL=window.appRootDir.nativeURL+id+'.pdf';
-	
-	window.resolveLocalFileSystemURL(toURL, exist(toURL), downloadAsset(content,id));
+	var Furl=window.appRootDir.nativeURL+id+'.pdf';
+	alert(Furl);
+	window.resolveLocalFileSystemURL(Furl, exist(Furl), downloadAsset(content,id));
 	
 	 
 	 
