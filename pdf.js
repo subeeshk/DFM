@@ -55,13 +55,6 @@ function PdfAttachment(content, id) {
 
 }
 
-function pdferror(id) {
-
-    alert("N" + id);
-
-}
-
-
 
 
 function downloadAsset(toURL,fileURL)
@@ -96,15 +89,9 @@ function downloadAsset(toURL,fileURL)
 
 
 function exist(toURL) {
- 
-    $$("#pdf1").attr("src", "Images/pdfC.png");
+ window.openFileNative.open(toURL);
+  $$("#pdf1").attr("src", "Images/pdfC.png");
 
-    
-    
-        window.openFileNative.open(toURL);
-    
-    
-    
-    
+   
 }
 
