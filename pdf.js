@@ -94,8 +94,7 @@ alert('NNNN');
 
 function exist(toURL){
 alert(toURL);
-	var dx=cordova.file.dataDirectory;
-	alert(dx);
+	
 	var fileurl= window.appRootDir.nativeURL;
 	alert(fileurl);
 
