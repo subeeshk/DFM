@@ -27,8 +27,7 @@ function fileDownload(dirName, fileURL, fileName, id) {
     function dirReady(entry) {
 
 
-        var fileurl = window.appRootDir.nativeURL + fileName;
-        alert(fileurl);
+       
 
 
 
@@ -38,6 +37,8 @@ function fileDownload(dirName, fileURL, fileName, id) {
 
         var fileTransfer = new FileTransfer();
 
+        alert(window.appRootDir.nativeURL + fileName);
+        
         fileTransfer.download(
             fileURL,
             window.appRootDir.nativeURL + fileName,
