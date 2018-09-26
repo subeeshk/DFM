@@ -61,12 +61,14 @@ function fileDownload(dirName, fileURL, fileName,id) {
 
 function PdfAttachment(content,id){
 	 $$("#pdf1").attr("src", "Images/PdfL.gif");
-	 
-	var fileurl= window.appRootDir.nativeURL;
-	alert(fileurl);
+	 checkfile(content,id); 
 	
 	
-	 fileDownload("DFMChtbot", content, id+'.pdf',id);
+	//var fileurl= window.appRootDir.nativeURL;
+	//alert(fileurl);
+	
+	
+	// fileDownload("DFMChtbot", content, id+'.pdf',id);
 	 
 	 
 	
@@ -83,7 +85,7 @@ function pdfcomplete(id,toURL){
 
 	
 	
-	window.resolveLocalFileSystemURL(toURL, exist(toURL), downloadAsset);
+	//window.resolveLocalFileSystemURL(toURL, exist(toURL), downloadAsset);
 
 	// window.openFileNative.open(toURL);
 	
@@ -103,4 +105,10 @@ alert(toURL);
 	var fileurl= window.appRootDir.nativeURL;
 	alert(fileurl);
 
+}
+function checkfile(content,id){
+alert(content);
+alert(id);
+//var fileurl= window.appRootDir.nativeURL;
+	//alert(fileurl);
 }
