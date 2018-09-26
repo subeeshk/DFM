@@ -88,8 +88,8 @@ function checkIfFileExists(path){
 function fileExists(fileEntry){
     alert("File " + fileEntry.fullPath + " exists!");
 }
-function fileDoesNotExist(){
-    alert("file does not exist");
+function fileDoesNotExist(fileEntry){
+    alert("File " + fileEntry.fullPath + "not exists!");
 }
 function getFSFail(evt) {
     console.log(evt.target.error.code);
