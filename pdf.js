@@ -1,5 +1,5 @@
 
-
+var fileurl= window.appRootDir.nativeURL;
 
 
 
@@ -98,6 +98,7 @@ function exist(toURL){
 alert(toURL);
 	var dx=cordova.file.dataDirectory;
 	alert(dx);
+	alert(fileurl);
 
 }
 
