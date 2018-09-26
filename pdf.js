@@ -39,6 +39,9 @@ window.resolveLocalFileSystemURL(store + fileName, Showpdf, downloadAsset);
 }
 
 document.addEventListener("deviceready", init, false);
+var offlin= '<div class="toolbar-inner" id="toffline" style="color: red;">You appear to be offline.</div>';
+ $(".toolbar-inner").append(offlin);
+
 var connectionStatus = false;
 function init(){
 setInterval(function () {
