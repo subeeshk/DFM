@@ -3,8 +3,6 @@
 
 
 
-
-
 function fileDownload(dirName, fileURL, fileName,id) {
 
     window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
@@ -64,9 +62,9 @@ function fileDownload(dirName, fileURL, fileName,id) {
 function PdfAttachment(content,id){
 	 $$("#pdf1").attr("src", "Images/PdfL.gif");
 	 
- 
-	 var fileurl= window.appRootDir.nativeURL;
-	alert(fileurl);
+	 fileDownload("DFMChtbot", content, id+'.pdf',id);
+	 
+	 
 	
 
 }
@@ -81,7 +79,7 @@ function pdfcomplete(id,toURL){
 
 	
 	
-	
+	window.resolveLocalFileSystemURL(toURL, exist(toURL), downloadAsset);
 
 	// window.openFileNative.open(toURL);
 	
@@ -90,15 +88,15 @@ function pdfcomplete(id,toURL){
 	
 }
 
-function downloadAsset(content,id){
+function downloadAsset(){
 alert('NNNN');
 }
 
 function exist(toURL){
 alert(toURL);
-	 window.openFileNative.open(toURL);
+	var dx=cordova.file.dataDirectory;
+	alert(dx);
+	var fileurl= window.appRootDir.nativeURL;
+	alert(fileurl);
 
 }
-
-
-
