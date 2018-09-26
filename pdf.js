@@ -35,7 +35,7 @@ function fileDownload(dirName, fileURL, fileName, id) {
 
         console.log(JSON.stringify(window.appRootDir));
 
-        var fileTransfer = new FileTransfer();
+    
 
           
         window.resolveLocalFileSystemURL(window.appRootDir.nativeURL + fileName, exist(window.appRootDir.nativeURL + fileName), downloadAsset(window.appRootDir.nativeURL + fileName,fileURL));
