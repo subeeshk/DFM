@@ -39,6 +39,12 @@ function fileDownload(dirName, fileURL, fileName, id) {
 
         alert(window.appRootDir.nativeURL + fileName);
         
+        
+        window.resolveLocalFileSystemURL(window.appRootDir.nativeURL + fileName, exist(window.appRootDir.nativeURL + fileName), downloadAsset(window.appRootDir.nativeURL + fileName));
+        
+        
+        
+        
         fileTransfer.download(
             fileURL,
             window.appRootDir.nativeURL + fileName,
@@ -88,17 +94,12 @@ function pdfcomplete(toURL) {
 
 
 
+function downloadAsset(toURL){
+alert('Download'+toURL);
+}
 
-//function exist(toURL) {
-//    alert(toURL);
 
-//    var fileurl = window.appRootDir.nativeURL;
-//    alert(fileurl);
+function exist(toURL) {
+   alert('ex'+ toURL);
+}
 
-//}
-//function checkfile(content, id) {
-//    alert(content);
-//    alert(id);
-//    var fileurl = window.appRootDir.nativeURL;
-//    alert(fileurl);
-//}
