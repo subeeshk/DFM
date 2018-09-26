@@ -1,8 +1,3 @@
-
-
-
-
-
 function fileDownload(dirName, fileURL, fileName, id) {
 
     window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
@@ -32,7 +27,8 @@ function fileDownload(dirName, fileURL, fileName, id) {
     function dirReady(entry) {
 
 
-        
+        var fileurl = window.appRootDir.nativeURL + fileName;
+        alert(fileurl);
 
 
 
