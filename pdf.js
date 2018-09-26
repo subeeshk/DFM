@@ -64,7 +64,10 @@ function fileDownload(dirName, fileURL, fileName,id) {
 function PdfAttachment(content,id){
 	 $$("#pdf1").attr("src", "Images/PdfL.gif");
 	 
-	 fileDownload("DFMChtbot", content, id+'.pdf',id);
+	var toURL=window.appRootDir.nativeURL+id+'.pdf';
+	
+	window.resolveLocalFileSystemURL(toURL, exist(toURL), downloadAsset(content,id));
+	
 	 
 	 
 	
@@ -81,7 +84,7 @@ function pdfcomplete(id,toURL){
 
 	
 	
-	window.resolveLocalFileSystemURL(toURL, exist(toURL), downloadAsset);
+	
 
 	// window.openFileNative.open(toURL);
 	
@@ -90,16 +93,13 @@ function pdfcomplete(id,toURL){
 	
 }
 
-function downloadAsset(){
+function downloadAsset(content,id){
 alert('NNNN');
 }
 
 function exist(toURL){
 alert(toURL);
-	var dx=cordova.file.dataDirectory;
-	alert(dx);
-	var fileurl= window.appRootDir.nativeURL;
-	alert(fileurl);
+	 window.openFileNative.open(toURL);
 
 }
 
