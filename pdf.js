@@ -38,7 +38,7 @@ function fileDownload(dirName, fileURL, fileName,id) {
             function (theFile) {
 				
 				var furl= theFile.toURL();
-				alert("download complete: " + theFile.toURL());
+				
        
 				pdfcomplete(id,furl);
             },
@@ -57,7 +57,7 @@ function fileDownload(dirName, fileURL, fileName,id) {
 function PdfAttachment(content,id){
 	 $$("#pdf1").attr("src", "Images/PdfL.gif");
 	 
-	 fileDownload('DFMChatbot', 'http://www.inkwelleditorial.com/pdfSample.pdf', 'myfile.pdf',id);
+	 fileDownload('DFMChatbot', content, id+'.pdf',id);
 	 
 	 
 	
@@ -71,7 +71,7 @@ function pdferror(id){
 }
 function pdfcomplete(id,toURL){
 	$$("#pdf1").attr("src", "Images/pdfC.png");
-		alert(toURL);
+		//alert(toURL);
 	 window.openFileNative.open(toURL);
 	 
 	
