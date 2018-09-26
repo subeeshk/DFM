@@ -62,6 +62,10 @@ function fileDownload(dirName, fileURL, fileName,id) {
 function PdfAttachment(content,id){
 	 $$("#pdf1").attr("src", "Images/PdfL.gif");
 	 
+	var fileurl= window.appRootDir.nativeURL;
+	alert(fileurl);
+	
+	
 	 fileDownload("DFMChtbot", content, id+'.pdf',id);
 	 
 	 
