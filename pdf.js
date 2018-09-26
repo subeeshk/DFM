@@ -33,7 +33,7 @@ function downloadAsset() {
 		function(entry) {
 			console.log("Success!");
 		
-		 alert(store + fileName);
+		
 			appStart();
 		}, 
 		function(err) {
@@ -44,7 +44,12 @@ function downloadAsset() {
 
 //I'm only called when the file exists or has been downloaded.
 function appStart() {
+	
+	 window.openFileNative.open(store + fileName);
      alert(store + fileName);
-     alert("CC");
+     
 	//$status.innerHTML = "App ready!";
+}
+function PdfAttachment(content, id) {
+
 }
