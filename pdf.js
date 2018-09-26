@@ -44,7 +44,7 @@ function downloadAsset() {
 
 //I'm only called when the file exists or has been downloaded.
 function appStart() {
-    
+     alert(store + fileName);
      alert("CC");
 	//$status.innerHTML = "App ready!";
 }
