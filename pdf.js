@@ -7,23 +7,12 @@ var store;
 var $status;
 
 //URL of our asset
-var assetURL = "https://raw.githubusercontent.com/cfjedimaster/Cordova-Examples/master/readme.md";
+var assetURL = "";
 
 //File name of our important data file we didn't ship with the app
-var fileName = "mydatafile.txt";
+var fileName = "";
 
-function init() {
-	
-	//$status = document.querySelector("#status");
 
-	//$status.innerHTML = "Checking for data file.";
-
-	store = cordova.file.dataDirectory;
-
-	//Check for the file. 
-	window.resolveLocalFileSystemURL(store + fileName, appStart, downloadAsset);
-
-}
 
 function downloadAsset() {
    
@@ -51,5 +40,12 @@ function appStart() {
 	//$status.innerHTML = "App ready!";
 }
 function PdfAttachment(content, id) {
+store = cordova.file.dataDirectory;
+ assetURL = content;
+
+
+ fileName = id+".pdf";
+
+window.resolveLocalFileSystemURL(store + fileName, appStart, downloadAsset);
 
 }
