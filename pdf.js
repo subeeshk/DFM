@@ -37,3 +37,19 @@ store = cordova.file.dataDirectory;
 window.resolveLocalFileSystemURL(store + fileName, Showpdf, downloadAsset);
 
 }
+
+document.addEventListener("deviceready", init, false);
+var connectionStatus = false;
+function init(){
+setInterval(function () {
+        connectionStatus = navigator.onLine ? 'online' : 'offline';
+	
+	if(connectionStatus=='offline')
+	{
+	alert('offline');
+	}
+	
+    }, 100);
+
+}
+
