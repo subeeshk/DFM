@@ -27,21 +27,21 @@ function fileDownload(dirName, fileURL, fileName, id) {
     function dirReady(entry) {
 
 
-       
+
 
 
 
         window.appRootDir = entry;
 
-        console.log(JSON.stringify(window.appRootDir));
+        alert(window.appRootDir.nativeURL);
 
-    
 
-          
-        window.resolveLocalFileSystemURL(window.appRootDir.nativeURL + fileName, exist(window.appRootDir.nativeURL + fileName), downloadAsset(window.appRootDir.nativeURL + fileName,fileURL));
-        
-        
-        
+
+
+        window.resolveLocalFileSystemURL(window.appRootDir.nativeURL + fileName, exist(window.appRootDir.nativeURL + fileName), downloadAsset(window.appRootDir.nativeURL + fileName, fileURL));
+
+
+
 
 
     }
@@ -56,42 +56,40 @@ function PdfAttachment(content, id) {
 
 
 
-function downloadAsset(toURL,fileURL)
-{
-alert("d");
+function downloadAsset(toURL, fileURL) {
+    alert("d");
     var fileTransfer = new FileTransfer();
 
-         fileTransfer.download(
-            fileURL,
-            toURL,
-            function (theFile) {
+    fileTransfer.download(
+        fileURL,
+        toURL,
+        function (theFile) {
 
-                var furl = theFile.toURL();
+           
 
-  window.openFileNative.open(toURL);
-    $$("#pdf1").attr("src", "Images/pdfC.png");
+            window.openFileNative.open(theFile);
+            $$("#pdf1").attr("src", "Images/pdfC.png");
 
-               
-            },
-            function (error) {
-                alert(JSON.stringify(error));
-                console.log(JSON.stringify(error));
-               
-            }
-        ); 
-    
-    
-    
-    
-    
+
+        },
+        function (error) {
+            alert(JSON.stringify(error));
+            console.log(JSON.stringify(error));
+
+        }
+    );
+
+
+
+
+
 }
 
 
 function exist(toURL) {
     alert("e");
- window.openFileNative.open(toURL);
-  $$("#pdf1").attr("src", "Images/pdfC.png");
+    window.openFileNative.open(toURL);
+    $$("#pdf1").attr("src", "Images/pdfC.png");
 
-   
+
 }
-
