@@ -1,19 +1,4 @@
 
-var reader = new FileReader();
-
-
-reader.onloadend = function(evt) {
-
-    if(evt.target.result == null) {
-	    
-	    alert(' doesn t exists');
-       // If you receive a null value the file doesn't exists
-    } else {
-        // Otherwise the file exists
-	     alert('  exists');
-    }         
-};
-
 
 
 
@@ -93,15 +78,25 @@ function pdferror(id){
 }
 function pdfcomplete(id,toURL){
 	$$("#pdf1").attr("src", "Images/pdfC.png");
-		//alert(toURL);
+
 	
-	// We are going to check if the file exists
-reader.readAsDataURL(toURL); 
+	
+	window.resolveLocalFileSystemURL(toURL, exist, downloadAsset);
+
 	// window.openFileNative.open(toURL);
 	
 	
 	
 	
+}
+
+function downloadAsset(){
+alert('NNNN');
+}
+
+function exist(){
+alert('SSSS');
+
 }
 
 
