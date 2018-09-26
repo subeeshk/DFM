@@ -109,6 +109,6 @@ alert(toURL);
 function checkfile(content,id){
 alert(content);
 alert(id);
-//var fileurl= window.appRootDir.nativeURL;
-	//alert(fileurl);
+var fileurl= window.appRootDir.nativeURL;
+alert(fileurl);
 }
