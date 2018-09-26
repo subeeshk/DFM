@@ -81,6 +81,7 @@ function pdfcomplete(id,toURL){
 
 
 function checkIfFileExists(path){
+	 alert(path);
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
         fileSystem.root.getFile(path, { create: false }, fileExists, fileDoesNotExist);
     }, getFSFail); //of requestFileSystem
@@ -88,8 +89,8 @@ function checkIfFileExists(path){
 function fileExists(fileEntry){
     alert("File " + fileEntry.fullPath + " exists!");
 }
-function fileDoesNotExist(fileEntry){
-    alert("File " + fileEntry.fullPath + "not exists!");
+function fileDoesNotExist(){
+   
 }
 function getFSFail(evt) {
     console.log(evt.target.error.code);
