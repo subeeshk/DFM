@@ -1,6 +1,6 @@
 
 var reader = new FileReader();
-var fileSource = <here is your file path>
+
 
 reader.onloadend = function(evt) {
 
