@@ -39,7 +39,7 @@ window.resolveLocalFileSystemURL(store + fileName, Showpdf, downloadAsset);
 }
 
 document.addEventListener("deviceready", init, false);
-var offlin= '<div class="toolbar-inner" id="toffline" style="color: red;">You appear to be offline.</div>';
+var offlin= '<div class="toolbar-inner" id="toffline" style="color: red; Display:none;">You appear to be offline.</div>';
  $(".toolbar-inner").append(offlin);
 
 var connectionStatus = false;
@@ -50,6 +50,11 @@ setInterval(function () {
 	if(connectionStatus=='offline')
 	{
 	alert('offline');
+		$("#toffline").Show();
+	}
+	else{
+	$("#toffline").Hide();
+	
 	}
 	
     }, 100);
