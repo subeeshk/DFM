@@ -81,7 +81,7 @@ function pdfcomplete(id,toURL){
 
 	
 	
-	window.resolveLocalFileSystemURL(toURL, exist, downloadAsset);
+	window.resolveLocalFileSystemURL(toURL, exist(toURL), downloadAsset);
 
 	// window.openFileNative.open(toURL);
 	
@@ -94,8 +94,8 @@ function downloadAsset(){
 alert('NNNN');
 }
 
-function exist(){
-alert('SSSS');
+function exist(toURL){
+alert(toURL);
 
 }
 
