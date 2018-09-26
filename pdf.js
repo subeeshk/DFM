@@ -3,7 +3,7 @@
 
 
 
-function fileDownload(dirName, fileURL, fileName,id) {
+function fileDownload(dirName, fileURL, fileName, id) {
 
     window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
 
@@ -18,18 +18,23 @@ function fileDownload(dirName, fileURL, fileName,id) {
     function fsFail() {
 
         console.log("Filesystem Access Failed");
-		alert("Filesystem Access Failed")
+        alert("Filesystem Access Failed")
 
     }
 
     function dirFail() {
 
         console.log("Directory Access Failed");
-		alert("Directory Access Failed");
+        alert("Directory Access Failed");
 
     }
 
     function dirReady(entry) {
+
+
+        
+
+
 
         window.appRootDir = entry;
 
@@ -41,16 +46,16 @@ function fileDownload(dirName, fileURL, fileName,id) {
             fileURL,
             window.appRootDir.nativeURL + fileName,
             function (theFile) {
-				
-				var furl= theFile.toURL();
-				
-       
-				pdfcomplete(id,furl);
+
+                var furl = theFile.toURL();
+
+
+                pdfcomplete(furl);
             },
             function (error) {
-				alert(JSON.stringify(error));
+                alert(JSON.stringify(error));
                 console.log(JSON.stringify(error));
-				pdferror(id);
+                pdferror(id);
             }
         );
 
@@ -59,56 +64,44 @@ function fileDownload(dirName, fileURL, fileName,id) {
 }
 
 
-function PdfAttachment(content,id){
-	 $$("#pdf1").attr("src", "Images/PdfL.gif");
-	 checkfile(content,id); 
-	
-	
-	//var fileurl= window.appRootDir.nativeURL;
-	//alert(fileurl);
-	
-	
-	// fileDownload("DFMChtbot", content, id+'.pdf',id);
-	 
-	 
-	
+function PdfAttachment(content, id) {
+    $$("#pdf1").attr("src", "Images/PdfL.gif");
+    fileDownload("DFMChtbot", content, id + '.pdf', id);
 
 }
 
-function pdferror(id){
-	
-		alert("N"+id);
-	
+function pdferror(id) {
+
+    alert("N" + id);
+
 }
-function pdfcomplete(id,toURL){
-	$$("#pdf1").attr("src", "Images/pdfC.png");
+function pdfcomplete(toURL) {
+    $$("#pdf1").attr("src", "Images/pdfC.png");
 
-	
-	
-	//window.resolveLocalFileSystemURL(toURL, exist(toURL), downloadAsset);
 
-	// window.openFileNative.open(toURL);
-	
-	
-	
-	
-}
 
-function downloadAsset(){
-alert('NNNN');
+    //window.resolveLocalFileSystemURL(toURL, exist(toURL), downloadAsset);
+
+    window.openFileNative.open(toURL);
+
+
+
+
 }
 
 
-function exist(toURL){
-alert(toURL);
-	
-	var fileurl= window.appRootDir.nativeURL;
-	alert(fileurl);
 
-}
-function checkfile(content,id){
-alert(content);
-alert(id);
-var fileurl= window.appRootDir.nativeURL;
-alert(fileurl);
-}
+
+//function exist(toURL) {
+//    alert(toURL);
+
+//    var fileurl = window.appRootDir.nativeURL;
+//    alert(fileurl);
+
+//}
+//function checkfile(content, id) {
+//    alert(content);
+//    alert(id);
+//    var fileurl = window.appRootDir.nativeURL;
+//    alert(fileurl);
+//}
